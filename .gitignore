@@ -2,7 +2,6 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 .venv/
-community_messages.db
 llm_usage.log
 uvicorn.*.log
 output/
