@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  community_api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      COMMUNITY_DB_PATH: /app/community_messages.db
+      JWT_SECRET: dev-community-secret-change-me-32bytes
+      AWS_REGION: us-east-1
+      BEDROCK_MODEL_ID: us.anthropic.claude-opus-4-7
+      LLM_TEMPERATURE: "0.0"
+      LLM_MAX_OUTPUT_TOKENS: "700"
+      LLM_USAGE_LOG_PATH: /app/llm_usage.log
+    volumes:
+      - ./community_messages.db:/app/community_messages.db
+      - ./data:/app/data:ro
+    restart: unless-stopped
